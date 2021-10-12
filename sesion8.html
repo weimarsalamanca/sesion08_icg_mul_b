@@ -1,0 +1,58 @@
+<canvas id='canvas' width=800 height=600>
+<script>
+	
+	function polygon(a, colorBorde, colorRelleno, grosor) { 
+	ctx.beginPath()
+	ctx.strokeStyle = colorBorde
+	ctx.fillStyle = colorRelleno
+	ctx.lineWidth = grosor;
+	ctx.moveTo(a[0],a[1])
+	for (i=2; i < a.length; i+=2)
+	ctx.lineTo(a[i],a[i+1]);
+	ctx.closePath()
+	ctx.stroke()
+	ctx.fill()
+}
+
+	function triangle(x1, y1, x2, y2, x3, y3, colBord, colRell, grosor){
+	ctx.beginPath();
+	ctx.strokeStyle = colBord;
+	ctx.fillStyle = colRell;
+	ctx.lineWidth = grosor;
+	ctx.moveTo(x1,y1);
+	ctx.lineTo(x2,y2);
+	ctx.lineTo(x3,y3);	
+	ctx.closePath();
+	ctx.stroke();
+	ctx.fill();
+}
+
+	function recorte(a){
+	ctx.beginPath();
+	ctx.moveTo(a[0],a[1])
+	for (i=2; i < a.length; i+=2)
+	ctx.lineTo(a[i],a[i+1]);	
+	ctx.clip();
+}
+
+	var canvas = document.getElementById('canvas')
+	var ctx = canvas.getContext('2d');
+
+
+	polygon([ 552,421, 552,357, 26,357, 26,421 ], 'rgba(252,241,3)','rgba(34,157,206)', 4) //relleno azul, borde:amarillo
+
+	polygon([ 130,465, 64,466, 64,20, 130,20 ], 'rgba(252,241,3)','rgba(252,241,3)', 4)//relleno amarillo
+
+	polygon([ 178,23, 202,456, 596,252 ], 'rgba(255,127,39)', 'rgba(195,195,195)', 4)
+
+	polygon([ 563,45, 563,115, 23,115, 23,45 ], 'rgba(255,127,39)','rgba(255,127,39)', 4)//relleno naranja
+
+	recorte([ 479,18, 541,18, 541,470, 479,470 ]);
+
+	polygon([ 479,18, 541,18, 541,470, 479,470 ], 'rgba(34,177,76)','rgba(34,177,76)', 4)//relleno verde
+	
+	polygon([ 552,421, 552,357, 26,357, 26,421 ], 'rgba(252,241,3)','rgba(34,157,206)', 4) //relleno azul, borde:amarillo
+
+	polygon([ 178,23, 202,456, 596,252 ], 'rgba(255,127,39)', 'rgba(195,195,195)', 4)
+
+</script>
